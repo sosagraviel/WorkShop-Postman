@@ -1,4 +1,4 @@
-# Webflux Example
+# WorkShop Example
 
 This project bornt with the aim of show an example with Spring WebFlux in reactive way.
 If you want more information you can take a look into https://refactorizando.com/guia-webflux-spring-boot
