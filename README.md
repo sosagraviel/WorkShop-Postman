@@ -1,11 +1,10 @@
 # WorkShop Example
 
-This project bornt with the aim of show an example with Spring WebFlux in reactive way.
-If you want more information you can take a look into https://refactorizando.com/guia-webflux-spring-boot
+This project was born with the aim of show an how handle postman into a RESTFul
 
 ## How does it run?
 
-### Launch a docke compose with mongodb
+### Launch a docker compose with mongodb
 First off you need to run a docker compose.
 In the root of the project run the next command from a terminal:
 
@@ -18,8 +17,8 @@ In the root of the project run the next command from a terminal:
 
 ### Verify your reactive application
 
-You can run a curl with event-stream to verify how works a flux with webflux.
+You can run a curl with event-stream to verify is it working well.
 
-    curl -H "Accept: text/event-stream" "http://localhost:8080/cars"
+    curl --location --request GET 'http://localhost:8080/cars'
 
 
