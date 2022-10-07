@@ -1,10 +1,9 @@
 package com.refactorizando.werbflux.example.repository;
 
 import com.refactorizando.werbflux.example.domain.Car;
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
-import org.springframework.data.repository.reactive.ReactiveSortingRepository;
-import reactor.core.publisher.Mono;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface CarRepository extends ReactiveMongoRepository<Car, Long> {
+
+public interface CarRepository extends MongoRepository<Car, Long> {
 
 }

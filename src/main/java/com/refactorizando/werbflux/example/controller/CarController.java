@@ -1,40 +1,35 @@
 package com.refactorizando.werbflux.example.controller;
 
 import com.refactorizando.werbflux.example.domain.Car;
+import com.refactorizando.werbflux.example.dto.CarDTO;
+import com.refactorizando.werbflux.example.mapper.CarsMapper;
 import com.refactorizando.werbflux.example.repository.CarRepository;
+import com.refactorizando.werbflux.example.service.CarService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
-import java.time.Duration;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/cars")
 public class CarController {
 
-    private static final int DELAY_PER_ITEM_MS = 100;
-
     private final CarRepository carRepository;
+    private final CarService carService;
 
     @PostMapping
-    public Mono<Car> register(@RequestBody Car car) {
-        return carRepository.save(car);
-    }
-
-    @GetMapping("/{id}")
-    public Mono<Car> getById(@PathVariable Long id) {
-        return carRepository.findById(id);
+    public ResponseEntity<CarDTO> register(@RequestBody CarDTO carDTO) throws Exception {
+        return ResponseEntity.ok(carService.createCar(carDTO));
     }
 
     @GetMapping()
-    public Flux<Car> getCars() {
-        return carRepository.findAll().delayElements(Duration.ofMillis(DELAY_PER_ITEM_MS));
+    public List<Car> getCars() {
+        return carRepository.findAll();
     }
-
-    @DeleteMapping("/{id}")
-    public Mono<Void> delete(@PathVariable("id") Long id) {
-        return carRepository.deleteById(id);
+    @PutMapping("/{id}")
+    public ResponseEntity<Car> updateCar(@PathVariable String id, @RequestBody CarDTO carDTO) throws Exception {
+        return ResponseEntity.ok(carService.updateCar(id, carDTO));
     }
 }

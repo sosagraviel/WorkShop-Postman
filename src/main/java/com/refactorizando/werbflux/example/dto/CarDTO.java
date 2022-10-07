@@ -1,4 +1,4 @@
-package com.refactorizando.werbflux.example.domain;
+package com.refactorizando.werbflux.example.dto;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -9,10 +9,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Car {
-    @Id
+@Builder
+public class CarDTO {
     private Long id;
     private String brand;
     private String color;
-    private RentCar rentCar;
+    private Long rentCarId;
 }
