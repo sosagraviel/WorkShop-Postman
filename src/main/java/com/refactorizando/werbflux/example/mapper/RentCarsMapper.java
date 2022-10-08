@@ -1,8 +1,6 @@
 package com.refactorizando.werbflux.example.mapper;
 
-import com.refactorizando.werbflux.example.domain.Car;
 import com.refactorizando.werbflux.example.domain.RentCar;
-import com.refactorizando.werbflux.example.dto.CarDTO;
 import com.refactorizando.werbflux.example.dto.RentCarDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

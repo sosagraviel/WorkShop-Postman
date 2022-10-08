@@ -1,12 +1,10 @@
 package com.refactorizando.werbflux.example.service;
 
-import com.refactorizando.werbflux.example.domain.Car;
 import com.refactorizando.werbflux.example.domain.RentCar;
-import com.refactorizando.werbflux.example.dto.CarDTO;
 import com.refactorizando.werbflux.example.dto.RentCarDTO;
-import com.refactorizando.werbflux.example.mapper.CarsMapper;
+import com.refactorizando.werbflux.example.exeptions.ErrorConstants;
+import com.refactorizando.werbflux.example.exeptions.MissingRentCardException;
 import com.refactorizando.werbflux.example.mapper.RentCarsMapper;
-import com.refactorizando.werbflux.example.repository.CarRepository;
 import com.refactorizando.werbflux.example.repository.RentCarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,12 +24,12 @@ public class RentCarService {
         return rentCarsMapper.rentCarToDTO(toRentCard);
     }
 
-    private RentCar getRentCarById(String rent_card_Id) throws Exception {
+    private RentCar getRentCarById(String rent_card_Id) {
         Optional<RentCar> optionalRentCard = rentCarRepository.findById(rent_card_Id);
         if (optionalRentCard.isPresent()) {
             return optionalRentCard.get();
         } else {
-            throw new Exception("");
+            throw new MissingRentCardException(ErrorConstants.MISSING_RENT_CAR);
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.refactorizando.werbflux.example.controller;
 
-import com.refactorizando.werbflux.example.domain.Car;
 import com.refactorizando.werbflux.example.domain.RentCar;
 import com.refactorizando.werbflux.example.dto.RentCarDTO;
 import com.refactorizando.werbflux.example.mapper.RentCarsMapper;
@@ -22,7 +21,7 @@ public class RentCarController {
     private final RentCarRepository rentCarRepository;
 
     @PostMapping
-    public ResponseEntity<RentCarDTO> register(@RequestBody RentCarDTO rentCarDTO) throws Exception {
+    public ResponseEntity<RentCarDTO> register(@RequestBody RentCarDTO rentCarDTO) {
         return ResponseEntity.ok(rentCarService.createRentCar(rentCarDTO));
     }
 
