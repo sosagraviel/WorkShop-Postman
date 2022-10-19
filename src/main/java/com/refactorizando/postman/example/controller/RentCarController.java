@@ -1,5 +1,6 @@
 package com.refactorizando.postman.example.controller;
 
+import com.refactorizando.postman.example.dto.CarDTO;
 import com.refactorizando.postman.example.dto.RentCarDTO;
 import com.refactorizando.postman.example.mapper.RentCarsMapper;
 import com.refactorizando.postman.example.repository.RentCarRepository;
@@ -30,6 +31,11 @@ public class RentCarController {
 
     @GetMapping("/{id}")
     public ResponseEntity<RentCarDTO> getCars(@PathVariable String id) {
-        return ResponseEntity.ok(rentCarService.getRentRarById(id));
+        return ResponseEntity.ok(rentCarService.getRentCarById(id));
+    }
+
+    @GetMapping("/cars/{rentCar_Id}")
+    public ResponseEntity<List<CarDTO>> getCarsB(@PathVariable String rentCar_Id) {
+        return ResponseEntity.ok(rentCarService.getAllCarFromRentCard(rentCar_Id));
     }
 }

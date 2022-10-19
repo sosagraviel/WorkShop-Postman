@@ -2,8 +2,8 @@ package com.refactorizando.postman.example.service;
 
 import com.refactorizando.postman.example.domain.Car;
 import com.refactorizando.postman.example.dto.CarDTO;
-import com.refactorizando.postman.example.exeptions.MissingCardException;
-import com.refactorizando.postman.example.exeptions.MissingRentCardException;
+import com.refactorizando.postman.example.exeptions.MissingCarException;
+import com.refactorizando.postman.example.exeptions.MissingRentCarException;
 import com.refactorizando.postman.example.repository.CarRepository;
 import com.refactorizando.postman.example.repository.RentCarRepository;
 import com.refactorizando.postman.example.domain.RentCar;
@@ -28,7 +28,7 @@ public class CarService {
                 car.setRentCar(getRentCarById(String.valueOf(carDTO.getId())));
                 carRepository.save(car);
             } else {
-                throw new MissingRentCardException(ErrorConstants.MISSING_RENT_CAR);
+                throw new MissingRentCarException(ErrorConstants.MISSING_RENT_CAR);
             }
         }
         carRepository.save(car);
@@ -40,7 +40,7 @@ public class CarService {
         if (optionalRentCard.isPresent()) {
             return optionalRentCard.get();
         } else {
-            throw new MissingRentCardException(ErrorConstants.MISSING_RENT_CAR);
+            throw new MissingRentCarException(ErrorConstants.MISSING_RENT_CAR);
         }
     }
 
@@ -54,13 +54,22 @@ public class CarService {
                     car.setRentCar(new RentCar());
                     car.setRentCar(rentCarOpt.get());
                     carRepository.save(car);
+                    return car;
                 } else {
-                    throw new MissingRentCardException(ErrorConstants.MISSING_RENT_CAR);
+                    throw new MissingRentCarException(ErrorConstants.MISSING_RENT_CAR);
                 }
             }
-            throw new MissingRentCardException(ErrorConstants.MISSING_RENT_CAR);
+            throw new MissingRentCarException(ErrorConstants.MISSING_RENT_CAR);
         } else {
-            throw new MissingCardException(ErrorConstants.MISSING_CAR);
+            throw new MissingCarException(ErrorConstants.MISSING_CAR);
+        }
+    }
+
+    public void deleteCar(String id) {
+        if (carRepository.existsById(Long.valueOf(id))) {
+            carRepository.deleteById(Long.valueOf(id));
+        } else {
+            throw new MissingCarException(ErrorConstants.MISSING_CAR);
         }
     }
 }

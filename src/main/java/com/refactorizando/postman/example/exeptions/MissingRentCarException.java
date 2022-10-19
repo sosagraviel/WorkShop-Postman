@@ -1,12 +1,12 @@
 package com.refactorizando.postman.example.exeptions;
 
-public class MissingRentCardException extends BadRequestAlertException {
+public class MissingRentCarException extends BadRequestAlertException {
 
     private static final long serialVersionUID = 1L;
-    public MissingRentCardException(String message) {
+    public MissingRentCarException(String message) {
         super(null, message, "MissingRentCard", "MissingRentCard");
     }
-    public MissingRentCardException() {
+    public MissingRentCarException() {
         super(null, "MissingRentCardException!", "MissingRentCardException", "MissingRentCardException");
     }
 }

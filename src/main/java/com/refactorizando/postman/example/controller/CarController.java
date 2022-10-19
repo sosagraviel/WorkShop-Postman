@@ -35,4 +35,10 @@ public class CarController {
     public ResponseEntity<Car> updateCar(@PathVariable String id, @RequestBody CarDTO carDTO) {
         return ResponseEntity.ok(carService.updateCar(id, carDTO));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteContributionById(@PathVariable String id) {
+        carService.deleteCar(id);
+        return ResponseEntity.ok().build();
+    }
 }

@@ -15,10 +15,14 @@ In the root of the project run the next command from a terminal:
 
     mvn spring-boot:run
 
-### Verify your reactive application
+### Verify your application
 
 You can run a curl with event-stream to verify is it working well.
 
     curl --location --request GET 'http://localhost:8080/cars'
 
+### Verify your swagger
 
+You can verify into the following url.
+
+    http://localhost:8080/swagger-ui/index.html

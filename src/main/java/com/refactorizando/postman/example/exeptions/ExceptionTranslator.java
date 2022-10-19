@@ -110,7 +110,7 @@ public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait
     }
 
     @ExceptionHandler
-    public ResponseEntity<Problem> handleMissingPartnerTypeExceptionException(MissingRentCardException ex, NativeWebRequest request) {
+    public ResponseEntity<Problem> handleMissingRentCardException(MissingRentCarException ex, NativeWebRequest request) {
         Problem problem = Problem.builder()
                 .withTitle(ex.getMessage())
                 .withDetail(ex.getMessage())
@@ -121,7 +121,7 @@ public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait
     }
 
     @ExceptionHandler
-    public ResponseEntity<Problem> handleMissingUserException(MissingCardException ex, NativeWebRequest request) {
+    public ResponseEntity<Problem> handleMissingCarException(MissingCarException ex, NativeWebRequest request) {
         Problem problem = Problem.builder()
                 .withTitle(ex.getMessage())
                 .withDetail(ex.getMessage())
