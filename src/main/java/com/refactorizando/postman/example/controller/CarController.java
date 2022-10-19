@@ -20,7 +20,6 @@ public class CarController {
     private final CarService carService;
 
 
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<CarDTO> register(@RequestBody CarDTO carDTO) {
         return ResponseEntity.ok(carService.createCar(carDTO));
