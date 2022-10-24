@@ -5,7 +5,9 @@ import com.refactorizando.postman.example.dto.LoginRequest;
 import com.refactorizando.postman.example.dto.SignupRequest;
 import com.refactorizando.postman.example.dto.UserDTO;
 import com.refactorizando.postman.example.exeptions.ErrorConstants;
+import com.refactorizando.postman.example.exeptions.MissingUserException;
 import com.refactorizando.postman.example.exeptions.UserExistException;
+import com.refactorizando.postman.example.mapper.UserMapper;
 import com.refactorizando.postman.example.repository.UserRepository;
 import com.refactorizando.postman.example.security.JwtUtils;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -57,5 +61,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO getAccountByEmail(String email) {
         return null;
+    }
+
+    @Override
+    public List<UserDTO> getUser() {
+        if (!UserMapper.INSTANCE.toUserDTO(userRepository.findAll()).isEmpty()) {
+            return UserMapper.INSTANCE.toUserDTO(userRepository.findAll());
+        } else {
+            throw new MissingUserException(ErrorConstants.MISSING_USER);
+        }
     }
 }

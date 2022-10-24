@@ -6,6 +6,8 @@ import com.refactorizando.postman.example.dto.LoginRequest;
 import com.refactorizando.postman.example.dto.SignupRequest;
 import com.refactorizando.postman.example.dto.UserDTO;
 
+import java.util.List;
+
 
 public interface UserService {
 
@@ -13,4 +15,6 @@ public interface UserService {
     String login(LoginRequest loginRequest);
     UserDTO getAccount();
     UserDTO getAccountByEmail(String email);
+
+    List<UserDTO> getUser();
 }
