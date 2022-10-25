@@ -25,17 +25,17 @@ public class RentCarController {
     }
 
     @GetMapping()
-    public List<RentCarDTO> getCars() {
-        return RentCarsMapper.INSTANCE.toCarsDTO(rentCarRepository.findAll());
+    public ResponseEntity<List<RentCarDTO>> getRentCars() {
+        return ResponseEntity.ok(rentCarService.getRentCars());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RentCarDTO> getCars(@PathVariable String id) {
+    public ResponseEntity<RentCarDTO> getRentCarsById(@PathVariable String id) {
         return ResponseEntity.ok(rentCarService.getRentCarById(id));
     }
 
     @GetMapping("/cars/{rentCar_Id}")
-    public ResponseEntity<List<CarDTO>> getCarsB(@PathVariable String rentCar_Id) {
+    public ResponseEntity<List<CarDTO>> getCarsByRentCard(@PathVariable String rentCar_Id) {
         return ResponseEntity.ok(rentCarService.getAllCarFromRentCard(rentCar_Id));
     }
 }

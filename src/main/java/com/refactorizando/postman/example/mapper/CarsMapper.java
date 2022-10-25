@@ -13,6 +13,5 @@ public interface CarsMapper {
     @Mapping(source = "rentCar.id",target = "rentCarId")
     CarDTO carsToDTO(Car car);
     Car dtoToCar(CarDTO carDTO);
-//    @Mapping(source = "rentCar.id",target = "rentCarId")
     List<CarDTO> toCarsDTO(List<Car> cars);
 }

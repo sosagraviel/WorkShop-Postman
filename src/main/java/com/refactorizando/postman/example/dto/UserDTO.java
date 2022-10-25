@@ -1,6 +1,5 @@
 package com.refactorizando.postman.example.dto;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

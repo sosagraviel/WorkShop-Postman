@@ -15,6 +15,5 @@ public interface UserService {
     String login(LoginRequest loginRequest);
     UserDTO getAccount();
     UserDTO getAccountByEmail(String email);
-
     List<UserDTO> getUser();
 }

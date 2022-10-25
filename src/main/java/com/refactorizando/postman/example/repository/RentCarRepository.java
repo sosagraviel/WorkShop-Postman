@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public interface RentCarRepository extends MongoRepository<RentCar, String> {
     Optional<RentCar> findById(Long id);
+
     @Query(value = "{'id': ?0}")
     RentCar findByMethod(Long id);
 }

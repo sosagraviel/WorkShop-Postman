@@ -11,5 +11,5 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 public class RentCarDTO {
     private Long id;
-    private String nombre;
+    private String name;
 }
