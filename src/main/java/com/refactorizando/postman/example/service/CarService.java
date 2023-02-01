@@ -25,7 +25,7 @@ public class CarService {
         Car car = CarsMapper.INSTANCE.dtoToCar(carDTO);
         if (carDTO.getRentCarId() != null) {
             if (rentCarRepository.findById(carDTO.getRentCarId()).isPresent()) {
-                car.setRentCar(getRentCarById(String.valueOf(carDTO.getId())));
+                car.setRentCar(getRentCarById(carDTO.getRentCarId()));
                 carRepository.save(car);
             } else {
                 throw new MissingRentCarException(ErrorConstants.MISSING_RENT_CAR);
@@ -35,7 +35,7 @@ public class CarService {
         return CarsMapper.INSTANCE.carsToDTO(car);
     }
 
-    private RentCar getRentCarById(String rent_card_Id) {
+    private RentCar getRentCarById(Long rent_card_Id) {
         Optional<RentCar> optionalRentCard = rentCarRepository.findById(rent_card_Id);
         if (optionalRentCard.isPresent()) {
             return optionalRentCard.get();
